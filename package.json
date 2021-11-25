@@ -1,0 +1,72 @@
+{
+  "name": "frontend-template-vite",
+  "version": "0.0.0",
+  "description": "前端專案共用腳手架 Vite",
+  "main": "index.js",
+  "repository": "git@github.com:hoongyuu/ViteTemplate.git",
+  "author": "Cheeto Lin <kahod12450@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/cz-commitlint": "^15.0.0",
+    "@intlify/vite-plugin-vue-i18n": "^3.2.1",
+    "@vitejs/plugin-vue": "^1.10.0",
+    "commitizen": "^4.2.4",
+    "husky": "^7.0.4",
+    "rollup-plugin-visualizer": "^5.5.2",
+    "unplugin-vue-components": "^0.14.12",
+    "vite": "^2.6.14",
+    "vite-plugin-pages": "^0.18.0",
+    "vite-plugin-vue-layouts": "^0.4.1",
+    "vite-plugin-windicss": "^1.5.1",
+    "windicss": "^3.2.1",
+    "jest": "^27.3.1",
+    "vue3-jest": "^27.0.0-alpha.1",
+    "@vue/test-utils": "^2.0.0-rc.17",
+    "@babel/preset-env": "^7.16.4",
+    "@types/jest": "^27.0.3"
+  },
+  "scripts": {
+    "format": "prettier '**/*.{js,json,ts,vue,md,yml,yaml}' !**/dist/** !./dist/** !**/coverage/** --write --no-semi --single-quote --trailing-comma none && yarn lint --fix",
+    "lint": "eslint '**/*.{js,vue}'",
+    "test": "jest --passWithNoTests",
+    "postinstall": "husky install",
+    "commit": "cz",
+    "dev": "yarn dev:client & yarn dev:dashboard",
+    "dev:client": "cross-env NODE_ENV=development API_URL=${API_URL:-http://localhost:7001} vite src/client --root src/client --port 3000 --config src/client/vite.config.js --open",
+    "dev:dashboard": "cross-env NODE_ENV=development API_URL=${API_URL:-http://localhost:7001} vite src/dashboard --root src/dashboard --port 4200 --config src/dashboard/vite.config.js --open",
+    "build:client": "cross-env NODE_ENV=production API_URL=${API_URL:-http://localhost:7001} vite build src/client --root src/client --config src/client/vite.config.js --emptyOutDir",
+    "build:dashboard": "cross-env NODE_ENV=production API_URL=${API_URL:-http://localhost:7001} vite build src/dashboard --root src/dashboard --config src/dashboard/vite.config.js --emptyOutDir",
+    "analyse:client": "cross-env NODE_ENV=production analyse=true vite build src/client --root src/client --config src/client/vite.config.js --emptyOutDir",
+    "analyse:dashboard": "cross-env NODE_ENV=production analyse=true vite build src/dashboard --root src/dashboard --config src/dashboard/vite.config.js --emptyOutDir",
+    "serve:client": "vite preview src/client --root src/client --config src/client/vite.config.js --port 3000",
+    "serve:dashboard": "vite preview src/dashboard --root src/dashboard --config src/dashboard/vite.config.js --port 4200"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "resolutions": {
+    "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.0.1",
+    "@vueuse/head": "^0.7.2",
+    "ant-design-vue": "^2.2.8",
+    "async-validator": "^4.0.7",
+    "axios": "^0.24.0",
+    "big.js": "^6.1.1",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.10.7",
+    "js-cookie": "^3.0.1",
+    "lodash": "4.17.21",
+    "nprogress": "^0.2.0",
+    "numeral": "^2.0.6",
+    "vite-plugin-antd-dayjs": "^1.0.0",
+    "vue": "^3.2.22",
+    "vue-router": "^4.0.11",
+    "vue-i18n": "^9.2.0-beta.21"
+  }
+}
